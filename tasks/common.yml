@@ -54,7 +54,7 @@
 
 - name: copy the SSL certificate & key
   copy:
-    src={{ sensu_cert_dir }}/{{ item }}
+    src={{ item }}
     dest=/etc/sensu/ssl/{{ item }}
     owner="{{ sensu_user }}"
     group="{{ sensu_group }}"
@@ -79,3 +79,11 @@
   notify:
     - restart sensu server
     - restart sensu client
+
+- name: update config ownership
+  file:
+    path=/etc/sensu
+    owner="{{ sensu_user }}"
+    group="{{ sensu_group }}"
+    state=directory
+    recurse=yes
