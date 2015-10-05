@@ -16,7 +16,7 @@
   when: ansible_os_family == "RedHat"
 
 - name: Install Sensu Community Monitoring Gems
-  gem: name={{ item }} state=latest executable=/opt/sensu/embedded/bin/gem
+  gem: name={{ item }} state=latest executable=/opt/sensu/embedded/bin/gem user_install=no
   with_items:
     - sensu-plugins-disk-checks
     - sensu-plugins-load-checks
@@ -27,7 +27,7 @@
     - sensu-plugins-raid-checks
 
 - name: Install Gems Dependencies for Custom Checks
-  gem: name={{ item }} state=latest executable=/opt/sensu/embedded/bin/gem
+  gem: name={{ item }} state=latest executable=/opt/sensu/embedded/bin/gem user_install=no
   with_items:
     - rest-client
 

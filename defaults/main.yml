@@ -3,8 +3,8 @@
 
 # Variable to control the installation
 sensu_install_client: true
-sensu_install_server: true
-sensu_install_uchiwa: true
+sensu_install_server: false
+sensu_install_uchiwa: false
 
 sensu_user:  sensu
 sensu_group: sensu
