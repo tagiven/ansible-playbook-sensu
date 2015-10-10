@@ -30,6 +30,12 @@
   gem: name={{ item }} state=latest executable=/opt/sensu/embedded/bin/gem user_install=no
   with_items:
     - rest-client
+    - json
+
+- name: Install Custom Gems
+  gem: name={{ item }} state=latest executable=/opt/sensu/embedded/bin/gem gem_source=custom_gems/{{ item }} user_install=no
+  with_items:
+    - sensu-plugins-opscenter-0.1.0.gem
 
 - name: generate config files
   template:
